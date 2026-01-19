@@ -1,0 +1,109 @@
+╔═══════════════════════════════════════════════════════════════════════╗
+║                                                                       ║
+║          🚨 NODE.JS NÃO ESTÁ INSTALADO - SIGA ESTES PASSOS          ║
+║                                                                       ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+📥 PASSO 1: INSTALAR NODE.JS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Opção A - Download Manual (MAIS FÁCIL):
+  1. Abra seu navegador
+  2. Acesse: https://nodejs.org/
+  3. Clique no botão VERDE "LTS" (versão recomendada)
+  4. Baixe o arquivo .msi (ex: node-v20.x.x-x64.msi)
+  5. Execute o arquivo baixado
+  6. Clique "Next" em todas as telas
+  7. Marque "Automatically install the necessary tools"
+  8. Clique "Install"
+  9. Aguarde a instalação (2-5 minutos)
+  10. FECHE COMPLETAMENTE O POWERSHELL
+  11. Abra um NOVO PowerShell
+
+Opção B - Via PowerShell (como Administrador):
+  1. Abra PowerShell como Administrador
+  2. Execute:
+     winget install OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements
+  3. Aguarde a instalação
+  4. FECHE E ABRA UM NOVO POWERSHELL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ PASSO 2: VERIFICAR INSTALAÇÃO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Após instalar e ABRIR UM NOVO POWERSHELL, execute:
+
+  node --version
+  npm --version
+
+Se aparecer números de versão (ex: v20.10.0), está funcionando! ✅
+
+Se ainda não funcionar:
+  ❌ Feche TODOS os PowerShells abertos
+  ❌ Abra um NOVO PowerShell
+  ❌ Tente novamente
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 PASSO 3: INSTALAR DEPENDÊNCIAS DO PROJETO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Navegue até a pasta do projeto:
+
+  cd C:\Users\natha\OneDrive\Desktop\incident-management-system\incident-management-system
+
+Instale as dependências:
+
+  npm install
+
+Isso pode levar 2-5 minutos na primeira vez.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚙️ PASSO 4: CONFIGURAR AMBIENTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Crie um arquivo .env.local na raiz do projeto com:
+
+  DATABASE_URL="postgresql://postgres:sua_senha@localhost:5432/incident_management"
+  NEXTAUTH_URL="http://localhost:3000"
+  NEXTAUTH_SECRET="gere-uma-chave-secreta"
+  NEXT_PUBLIC_SOCKET_URL="http://localhost:3000"
+
+Veja CONFIGURAR-AMBIENTE.md para mais detalhes.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+▶️ PASSO 5: INICIAR O SERVIDOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  npm run dev
+
+Acesse: http://localhost:3000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🆘 PROBLEMAS?
+
+❌ "node não é reconhecido"
+   → Node.js não está instalado OU PowerShell não foi reiniciado
+   → SOLUÇÃO: Instale o Node.js e feche/abra o PowerShell
+
+❌ "npm não é reconhecido"
+   → npm vem com Node.js, então Node.js não está instalado
+   → SOLUÇÃO: Instale o Node.js primeiro
+
+❌ Instalação não funciona
+   → Tente baixar manualmente de https://nodejs.org/
+   → Ou use Chocolatey: choco install nodejs-lts
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 MAIS INFORMAÇÕES:
+
+  • INSTALAR-NODEJS.md - Guia detalhado
+  • CONFIGURAR-AMBIENTE.md - Configuração de variáveis
+  • docs/WINDOWS-SETUP.md - Setup completo Windows
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

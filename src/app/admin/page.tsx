@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ChatPanel } from '@/components/ChatPanel';
 
 // Dados simulados
 const mockIncidents = [
@@ -32,9 +34,16 @@ const priorityConfig = {
   CRITICAL: { label: 'Crítica', color: 'bg-red-100', textColor: 'text-red-800' },
 };
 
+const CHAT_CANAIS = [
+  { value: 'equipe-EQ-01', label: 'Equipe Alpha (EQ-01)' },
+  { value: 'OC-500', label: 'Ocorrência Reparo Paulista (OC-500)' },
+];
+
 export default function AdminDashboard() {
+  const router = useRouter();
   const [selectedIncident, setSelectedIncident] = useState(mockIncidents[0]);
   const [filterStatus, setFilterStatus] = useState('ALL');
+  const [chatCanal, setChatCanal] = useState(CHAT_CANAIS[0].value);
 
   const filteredIncidents = filterStatus === 'ALL' 
     ? mockIncidents 
@@ -59,6 +68,12 @@ export default function AdminDashboard() {
             </div>
             <span className="text-white font-bold">Painel Admin</span>
           </Link>
+          <button
+            onClick={() => { localStorage.removeItem('usuarioLogado'); router.push('/'); }}
+            className="text-red-400 text-sm hover:underline"
+          >
+            Sair
+          </button>
         </div>
       </header>
 
@@ -214,6 +229,28 @@ export default function AdminDashboard() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Chat com a Equipe */}
+        <div className="mt-8">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <h2 className="text-2xl font-bold text-white">Chat com a Equipe</h2>
+            <select
+              value={chatCanal}
+              onChange={(e) => setChatCanal(e.target.value)}
+              className="bg-slate-700 text-white border border-slate-600 rounded-lg px-3 py-2 text-sm"
+            >
+              {CHAT_CANAIS.map((c) => (
+                <option key={c.value} value={c.value}>{c.label}</option>
+              ))}
+            </select>
+          </div>
+          <ChatPanel
+            key={chatCanal}
+            channel={chatCanal}
+            senderName="Central"
+            title="Chat com a Equipe"
+          />
         </div>
       </div>
     </div>
